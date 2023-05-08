@@ -25,8 +25,8 @@ public class HormigaCria extends Hormiga {
         this.getC().entrarColonia(this);
         while(true){
             
-               // this.getC().comer(Util.intAleat(3000,5000), this);
-                //this.getC().descansar(4000, this);   
+                this.getC().comer(Util.intAleat(3000,5000), this);
+                this.getC().descansar(4000, this);   
         
         }
     } 

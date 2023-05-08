@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
@@ -35,8 +34,8 @@ public class Colonia {
 
     // LOG
     private FileWriter logWriter;
-    private PrintWriter pw;
-    private DateTimeFormatter formatoFecha;
+    private final PrintWriter pw;
+    private final DateTimeFormatter formatoFecha;
 
     // Contadores de comida
     private int comidaAlmacen;
@@ -249,6 +248,27 @@ public class Colonia {
         }
     }
 
+    // Metodo para que las hormigas coman:
+    public void comer(int tiempo, Hormiga h) {
+        try {
+            comprobarPausa();
+            comedor.meter(h);
+            consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");            
+            semComVacio.acquire();
+            comprobarPausa();
+            consolaLog("La hormiga" + h.getNombre() + " comienza a comer");
+            semComidaCom.acquire();
+            comidaComedor--;           
+            jcontComedor.setText(Integer.toString(comidaComedor));
+            semComidaCom.release();
+            Thread.sleep(tiempo);   // Diferentes tiempos segun la hormiga
+            comprobarPausa();
+            System.out.println("La hormiga" + h.getNombre() + " ha terminado de comer y se va");
+            comedor.sacar(h);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // Metodo para escribir en el log:
     public void escribirLog(String mensaje) {

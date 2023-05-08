@@ -33,7 +33,7 @@ public class HormigaSoldado extends Hormiga{
                 this.getC().descansar(2000, this);
                 System.out.println("Hormiga soldado esta ");
             }
-            //this.getC().comer(3000, this);
+            this.getC().comer(3000, this);
 
         }
     }

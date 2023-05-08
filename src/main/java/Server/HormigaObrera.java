@@ -38,8 +38,8 @@ public class HormigaObrera extends Hormiga {
                     }
                 }
                 
-                //this.getC().comer(300,this);
-                //this.getC().descansar(100,this);
+                this.getC().comer(Util.intAleat(1000, 3000),this);
+                this.getC().descansar(1000,this);
 
             }catch(InterruptedException e){}  
         
