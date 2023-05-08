@@ -1,0 +1,14 @@
+Server\Hormiga.class
+CompartidosRMI\MetodosCompartidos.class
+Server\HormigaObrera.class
+Server\ListaThreads.class
+Server\HormigaCria.class
+Cliente\InterfazRemota$1.class
+Server\Generador.class
+Server\HormigaSoldado.class
+Cliente\MainRemoto.class
+Server\InterfazPrincipal$1.class
+Server\Util.class
+Server\Colonia.class
+Server\InterfazPrincipal.class
+Cliente\InterfazRemota.class
