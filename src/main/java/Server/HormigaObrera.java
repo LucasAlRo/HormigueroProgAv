@@ -34,7 +34,7 @@ public class HormigaObrera extends Hormiga {
                         this.getC().reponerAlmacen(this); 
                     }
                     else{
-                        //this.getC().reponerComedor(this);
+                        this.getC().reponerComedor(this);
                     }
                 }
                 

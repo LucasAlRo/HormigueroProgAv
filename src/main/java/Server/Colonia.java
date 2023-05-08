@@ -22,11 +22,13 @@ import javax.swing.JTextField;
 public class Colonia {
 
     // Ubicaciones de la colonia:
-    ListaThreads colonia;
-    ListaThreads exterior;
-    ListaThreads instruccion;
-    ListaThreads descanso;
-    ListaThreads almacen;
+    private ListaThreads colonia;
+    private ListaThreads exterior;
+    private ListaThreads instruccion;
+    private ListaThreads descanso;
+    private ListaThreads almacen;
+    private ListaThreads llevandoComida;
+    private ListaThreads comedor;
 
     // Pausa  con monitor
     boolean Pausa = false;
@@ -41,6 +43,7 @@ public class Colonia {
     private int comidaComedor;
     
     private JTextField jcontAlmacen;
+    private JTextField jcontComedor;
 
     // Semaforos:
     
@@ -61,15 +64,19 @@ public class Colonia {
     // CONSTRUCTOR
     public Colonia(JTextField jexterior, JTextField jcolonia, 
             JTextField jinstruccion, JTextField jdescanso,
-            JTextField jalmacen, JTextField jcontAlmacen) {
+            JTextField jalmacen, JTextField jcontAlmacen, JTextField jllevando,
+            JTextField jcomedor, JTextField jcontComedor) {
 
         exterior = new ListaThreads(jexterior);
         colonia = new ListaThreads(jcolonia);
         instruccion = new ListaThreads(jinstruccion);
         descanso = new ListaThreads(jdescanso);
         almacen = new ListaThreads(jalmacen);
+        llevandoComida = new ListaThreads(jllevando);
+        comedor = new ListaThreads(jcomedor);
         
         this.jcontAlmacen = jcontAlmacen;
+        this.jcontComedor = jcontComedor;
         
 
         //  LOG
@@ -168,10 +175,10 @@ public class Colonia {
     public void reponerAlmacen(Hormiga h) {
         try {
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "se  acerca al almacen");
+            consolaLog("La hormiga"  + h.getNombre()  + "se  acerca al almacen para depositar comida");
             aforoAlmacen.acquire();
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "accede al almacen");
+            consolaLog("La hormiga"  + h.getNombre()  + "accede al almacen  para depositar comida");
             almacen.meter(h);
             semComidaAlm.acquire();
             Thread.sleep(Util.intAleat(2000, 4000));
@@ -189,6 +196,59 @@ public class Colonia {
         }
     }
     
+    // Metodo para recoger comida del almacen y llevarlo a la zona de comer:
+    public void reponerComedor(Hormiga h) {
+        try {
+            comprobarPausa();
+            consolaLog("La hormiga"  + h.getNombre()  + "se  acerca al almacen para recoger comida");
+            aforoAlmacen.acquire();
+            comprobarPausa();
+            consolaLog("La hormiga"  + h.getNombre()  + "accede al almacen para recoger comida");
+            almacen.meter(h);
+            semAlmVacio.acquire();
+            semComidaAlm.acquire();
+            Thread.sleep(Util.intAleat(1000, 2000));
+            comprobarPausa();
+            consolaLog("La hormiga"  + h.getNombre()  + "recoge comida del almacen");
+            comidaAlmacen -= 5;            
+            jcontAlmacen.setText(Integer.toString(comidaAlmacen));
+            semComidaAlm.release();
+            
+            // Termina de recoger la comida y se marcha
+            aforoAlmacen.release();
+            comprobarPausa();
+            consolaLog("La hormiga" + h.getNombre() + " se lleva comida del almacen");            
+            almacen.sacar(h);
+            llevandoComida.meter(h);
+            comprobarPausa();
+            consolaLog("La hormiga" + h.getNombre() + " lleva comida al comedor");
+            Thread.sleep(Util.intAleat(1000, 3000));
+
+            // Llega al comedor con la comida
+            comprobarPausa();
+            llevandoComida.sacar(h);
+            comedor.meter(h);
+            consolaLog("La hormiga" + h.getNombre() + " llega al comedor con comida");
+
+            // Deposita la comida en el comedor
+            Thread.sleep(Util.intAleat(1000, 2000));
+            comprobarPausa();
+            consolaLog("La hormiga" + h.getNombre() + " deja la comida en el comedor");
+            comidaComedor += 5;            
+            jcontComedor.setText(Integer.toString(comidaComedor));
+            
+            // Por ultimo, se marcha
+            comprobarPausa();
+            consolaLog("La hormiga" + h.getNombre() + " abandona el comedor");
+            comedor.sacar(h);
+            semComidaCom.release();
+            semComVacio.release();
+            aforoAlmacen.release();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     // Metodo para escribir en el log:
     public void escribirLog(String mensaje) {

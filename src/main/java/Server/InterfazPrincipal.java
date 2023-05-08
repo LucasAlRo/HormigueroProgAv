@@ -15,7 +15,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     
     public InterfazPrincipal() {
         initComponents();
-        c = new Colonia(jExterior, jColonia, jInstruccion, jDescanso, jAlmacen, jContAlmacen);
+        c = new Colonia(jExterior, jColonia, jInstruccion,
+                jDescanso, jAlmacen, jContAlmacen, 
+                jLlevando, jComedor, jContComedor);
         Generador generador = new Generador(c);
         generador.start();
     }
@@ -36,6 +38,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jBotonPausa = new javax.swing.JButton();
         jAlmacen = new javax.swing.JTextField();
         jContAlmacen = new javax.swing.JTextField();
+        jLlevando = new javax.swing.JTextField();
+        jComedor = new javax.swing.JTextField();
+        jContComedor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +83,22 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLlevando.setText("Llevando");
+        jLlevando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLlevandoActionPerformed(evt);
+            }
+        });
+
+        jComedor.setText("Zona comer");
+        jComedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComedorActionPerformed(evt);
+            }
+        });
+
+        jContComedor.setText("ContComedor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,8 +106,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLlevando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBotonPausa)
-                    .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jContComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jExterior)
                         .addComponent(jColonia, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
@@ -109,8 +135,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jContComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jLlevando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jBotonPausa)
                 .addGap(60, 60, 60))
         );
@@ -151,6 +183,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jContAlmacenActionPerformed
 
+    private void jLlevandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLlevandoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLlevandoActionPerformed
+
+    private void jComedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,9 +230,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jAlmacen;
     private javax.swing.JButton jBotonPausa;
     private javax.swing.JTextField jColonia;
+    private javax.swing.JTextField jComedor;
     private javax.swing.JTextField jContAlmacen;
+    private javax.swing.JTextField jContComedor;
     private javax.swing.JTextField jDescanso;
     private javax.swing.JTextField jExterior;
     private javax.swing.JTextField jInstruccion;
+    private javax.swing.JTextField jLlevando;
     // End of variables declaration//GEN-END:variables
 }
