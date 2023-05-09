@@ -4,10 +4,13 @@
  */
 package CompartidosRMI;
 
+import java.rmi.Remote;
+
 /**
  *
  * @author lucas
  */
-public interface MetodosCompartidos {
+public interface MetodosCompartidos extends Remote{
     
+    Integer getObrExterior();
 }

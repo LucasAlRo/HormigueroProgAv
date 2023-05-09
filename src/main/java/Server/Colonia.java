@@ -108,7 +108,6 @@ public class Colonia {
         }
         this.pw = new PrintWriter(logWriter);
         this.formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-
     }
 
     // Metodo para que las hormigas entren en la colonia:
@@ -179,8 +178,10 @@ public class Colonia {
             comprobarPausa();
         } catch (InterruptedException e) {
             if (h.getTipo().equals("Soldado")) {
+                consolaLog("La hormiga" + h.getNombre() + " deja de descansar y va a defender la colonia");
                 defenderColonia(h);
             } else {
+                consolaLog("La cria" + h.getNombre() + " deja de descansar y se va al refugio");
                 refugiarse(h);
             }
         }
@@ -296,8 +297,10 @@ public class Colonia {
             comedor.sacar(h);
         } catch (InterruptedException ex) {
             if (h.getTipo().equals("Soldado")) {
+                consolaLog("La hormiga" + h.getNombre() + " deja de comer y va a defender la colonia");
                 defenderColonia(h);
             } else {
+                consolaLog("La cria" + h.getNombre() + " deja de comer y va a refugiarse");
                 refugiarse(h);
             }
         }
@@ -410,7 +413,8 @@ public class Colonia {
             Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    // Metodo para que las crias esperen a que cese la amenaza
     public synchronized void esperarAmenaza(Hormiga h) {
         while (this.Amenaza) {
             try {

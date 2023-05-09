@@ -12,9 +12,9 @@ import javax.swing.JTextField;
  * @author lucas
  */
 public class ListaThreads {
-    ArrayList<Hormiga> lista;
-    JTextField tf;
-    int tamano;
+    private ArrayList<Hormiga> lista;
+    private JTextField tf;
+    private int tamano;
     
     public ListaThreads(JTextField tf)
     {
