@@ -23,6 +23,13 @@ public class HormigaCria extends Hormiga {
         
         this.getC().consolaLog("La hormiga" + getNombre() + " ha nacido");
         this.getC().entrarColonia(this);
+        
+        // En estado de amenaza, las crias que entren a la colonia deberan 
+        // refugiarse tambien
+        if (this.getC().comprobarAmenaza()) {
+            this.interrupt();
+        }
+        
         while(true){
             
                 this.getC().comer(Util.intAleat(3000,5000), this);

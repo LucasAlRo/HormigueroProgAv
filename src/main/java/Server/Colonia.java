@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,15 +26,27 @@ public class Colonia {
 
     // Ubicaciones de la colonia:
     private ListaThreads colonia;
+    private ListaThreads obrerasTotales;
+    private ListaThreads soldadosTotales;
+    private ListaThreads criasTotales;
     private ListaThreads exterior;
     private ListaThreads instruccion;
     private ListaThreads descanso;
     private ListaThreads almacen;
     private ListaThreads llevandoComida;
     private ListaThreads comedor;
+    private ListaThreads defendiendo;
+    private ListaThreads refugio;
+
+    // Lista de hormigas totales (utilizado en la invasion)
+    private List<Hormiga> hormigasTotales;
 
     // Pausa  con monitor
     boolean Pausa = false;
+
+    // Amenaza con monitor  y cyclic barrier
+    boolean Amenaza = false;
+    private CyclicBarrier formacionDefensiva;
 
     // LOG
     private FileWriter logWriter;
@@ -40,12 +56,11 @@ public class Colonia {
     // Contadores de comida
     private int comidaAlmacen;
     private int comidaComedor;
-    
+
     private JTextField jcontAlmacen;
     private JTextField jcontComedor;
 
     // Semaforos:
-    
     // Entrada:
     private Semaphore semEntrada = new Semaphore(1);  // Un solo tunel
     // Salida:
@@ -61,22 +76,30 @@ public class Colonia {
     private Semaphore semComVacio = new Semaphore(0);
 
     // CONSTRUCTOR
-    public Colonia(JTextField jexterior, JTextField jcolonia, 
+    public Colonia(JTextField jexterior, JTextField jcolonia,
+            JTextField jobreras, JTextField jsoldados, JTextField jcrias,
             JTextField jinstruccion, JTextField jdescanso,
             JTextField jalmacen, JTextField jcontAlmacen, JTextField jllevando,
-            JTextField jcomedor, JTextField jcontComedor) {
+            JTextField jcomedor, JTextField jcontComedor, JTextField jdefendiendo,
+            JTextField jrefugio) {
 
-        exterior = new ListaThreads(jexterior);
-        colonia = new ListaThreads(jcolonia);
-        instruccion = new ListaThreads(jinstruccion);
-        descanso = new ListaThreads(jdescanso);
-        almacen = new ListaThreads(jalmacen);
-        llevandoComida = new ListaThreads(jllevando);
-        comedor = new ListaThreads(jcomedor);
-        
+        this.exterior = new ListaThreads(jexterior);
+        this.colonia = new ListaThreads(jcolonia);
+        this.obrerasTotales = new ListaThreads(jobreras);
+        this.soldadosTotales = new ListaThreads(jsoldados);
+        this.criasTotales = new ListaThreads(jcrias);
+        this.instruccion = new ListaThreads(jinstruccion);
+        this.descanso = new ListaThreads(jdescanso);
+        this.almacen = new ListaThreads(jalmacen);
+        this.llevandoComida = new ListaThreads(jllevando);
+        this.comedor = new ListaThreads(jcomedor);
+        this.defendiendo = new ListaThreads(jdefendiendo);
+        this.refugio = new ListaThreads(jrefugio);
+
+        this.hormigasTotales = new ArrayList<>();
+
         this.jcontAlmacen = jcontAlmacen;
         this.jcontComedor = jcontComedor;
-        
 
         //  LOG
         try {
@@ -100,7 +123,7 @@ public class Colonia {
             consolaLog("La hormiga" + h.getNombre() + " ha entrado en la colonia");
             semEntrada.release();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+            refugiarse(h); //Solamente las hormigas crias son interrumpidas al entrar
         }
 
     }
@@ -130,7 +153,8 @@ public class Colonia {
             consolaLog("La hormiga" + h.getNombre() + " comienza a entrenar");
             Thread.sleep(Util.intAleat(2000, 8000)); // De 2 a 8 segundos
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            consolaLog("La hormiga" + h.getNombre() + " deja de entrenar y va a defender la colonia");
+            defenderColonia(h);
         }
     }
 
@@ -154,7 +178,11 @@ public class Colonia {
             Thread.sleep(tiempo);
             comprobarPausa();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            if (h.getTipo().equals("Soldado")) {
+                defenderColonia(h);
+            } else {
+                refugiarse(h);
+            }
         }
         dejarDescanso(h);
     }
@@ -169,54 +197,54 @@ public class Colonia {
             Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     // Metodo para acceder al almaceny depositar comida:
     public void reponerAlmacen(Hormiga h) {
         try {
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "se  acerca al almacen para depositar comida");
+            consolaLog("La hormiga" + h.getNombre() + "se  acerca al almacen para depositar comida");
             aforoAlmacen.acquire();
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "accede al almacen  para depositar comida");
+            consolaLog("La hormiga" + h.getNombre() + "accede al almacen  para depositar comida");
             almacen.meter(h);
             semComidaAlm.acquire();
             Thread.sleep(Util.intAleat(2000, 4000));
-            consolaLog("La hormiga"  + h.getNombre()  + "deposita comida en el almacen");
+            consolaLog("La hormiga" + h.getNombre() + "deposita comida en el almacen");
             comidaAlmacen += 5;
             jcontAlmacen.setText(Integer.toString(comidaAlmacen));
             semComidaAlm.release();
             semAlmVacio.release();
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "abandona el almacen");
+            consolaLog("La hormiga" + h.getNombre() + "abandona el almacen");
             almacen.sacar(h);
             aforoAlmacen.release();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-    
+
     // Metodo para recoger comida del almacen y llevarlo a la zona de comer:
     public void reponerComedor(Hormiga h) {
         try {
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "se  acerca al almacen para recoger comida");
+            consolaLog("La hormiga" + h.getNombre() + "se  acerca al almacen para recoger comida");
             aforoAlmacen.acquire();
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "accede al almacen para recoger comida");
+            consolaLog("La hormiga" + h.getNombre() + "accede al almacen para recoger comida");
             almacen.meter(h);
             semAlmVacio.acquire();
             semComidaAlm.acquire();
             Thread.sleep(Util.intAleat(1000, 2000));
             comprobarPausa();
-            consolaLog("La hormiga"  + h.getNombre()  + "recoge comida del almacen");
-            comidaAlmacen -= 5;            
+            consolaLog("La hormiga" + h.getNombre() + "recoge comida del almacen");
+            comidaAlmacen -= 5;
             jcontAlmacen.setText(Integer.toString(comidaAlmacen));
             semComidaAlm.release();
-            
+
             // Termina de recoger la comida y se marcha
             aforoAlmacen.release();
             comprobarPausa();
-            consolaLog("La hormiga" + h.getNombre() + " se lleva comida del almacen");            
+            consolaLog("La hormiga" + h.getNombre() + " se lleva comida del almacen");
             almacen.sacar(h);
             llevandoComida.meter(h);
             comprobarPausa();
@@ -233,9 +261,9 @@ public class Colonia {
             Thread.sleep(Util.intAleat(1000, 2000));
             comprobarPausa();
             consolaLog("La hormiga" + h.getNombre() + " deja la comida en el comedor");
-            comidaComedor += 5;            
+            comidaComedor += 5;
             jcontComedor.setText(Integer.toString(comidaComedor));
-            
+
             // Por ultimo, se marcha
             comprobarPausa();
             consolaLog("La hormiga" + h.getNombre() + " abandona el comedor");
@@ -250,24 +278,30 @@ public class Colonia {
 
     // Metodo para que las hormigas coman:
     public void comer(int tiempo, Hormiga h) {
+
         try {
             comprobarPausa();
             comedor.meter(h);
-            consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");            
+            consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");
             semComVacio.acquire();
             comprobarPausa();
             consolaLog("La hormiga" + h.getNombre() + " comienza a comer");
             semComidaCom.acquire();
-            comidaComedor--;           
+            comidaComedor--;
             jcontComedor.setText(Integer.toString(comidaComedor));
             semComidaCom.release();
             Thread.sleep(tiempo);   // Diferentes tiempos segun la hormiga
             comprobarPausa();
             System.out.println("La hormiga" + h.getNombre() + " ha terminado de comer y se va");
             comedor.sacar(h);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (InterruptedException ex) {
+            if (h.getTipo().equals("Soldado")) {
+                defenderColonia(h);
+            } else {
+                refugiarse(h);
+            }
         }
+
     }
 
     // Metodo para escribir en el log:
@@ -278,7 +312,7 @@ public class Colonia {
         } catch (IOException e) {
         }
     }
-    
+
     // Metodo para escribir en consola y el log en una  llamada:
     public void consolaLog(String mensaje) {
         System.out.println(mensaje);
@@ -289,6 +323,7 @@ public class Colonia {
         return exterior;
     }
 
+    // Metodos para la pausa:
     public synchronized void pausar() {
         Pausa = true;
     }
@@ -304,6 +339,124 @@ public class Colonia {
         while (Pausa) {
             wait();
         }
+    }
+
+    // Metodos de la invasion:
+    // Utilizada por claridad en el codigo
+    public synchronized boolean comprobarAmenaza() {
+        return this.Amenaza;
+    }
+
+    //  Al ser un estado de amenaza, se puede utilizar un booleano que represente 
+    //  si la colonia esta siendo atacada (no se genera un objeto como tal)
+    public synchronized void generarInsectoInvasor() {
+        try {
+            comprobarPausa();
+            this.Amenaza = true;
+            consolaLog("¡Un insecto está atacando la colonia!");
+            formacionDefensiva = new CyclicBarrier(soldadosTotales.getTamano());
+            alertaAmenaza(hormigasTotales);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    // Se interrumpe  la ejecucion de todos los hilos hormiga soldado y cria
+    // (ya que las obreras siguen actuando igual)
+    public synchronized void alertaAmenaza(List<Hormiga> hormiga) {
+        for (Hormiga h : hormiga) {
+            if (h.getTipo().equals("Soldado") || h.getTipo().equals("Cria")) {
+                h.interrupt();
+            }
+        }
+    }
+
+    public void defenderColonia(Hormiga h) {
+        try {
+            comprobarPausa();
+            instruccion.sacar(h);
+            descanso.sacar(h);
+            comedor.sacar(h);
+            salirColonia(h);
+            defendiendo.meter(h);
+            consolaLog("¡La hormiga" + h.getNombre() + " se encuentra en  el frente defensivo!");
+            formacionDefensiva.await();
+            comprobarPausa();
+            consolaLog("¡La hormiga" + h.getNombre() + " lucha contra el insecto atacante!");
+            Thread.sleep(20000);
+            comprobarPausa();
+            consolaLog("¡La hormiga" + h.getNombre() + " ha vencido al insecto!");
+            finalizarInvasion();
+            defendiendo.sacar(h);
+            entrarColonia(h);
+        } catch (InterruptedException | BrokenBarrierException ex) {
+            Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void refugiarse(Hormiga h) {
+        try {
+            comprobarPausa();
+            descanso.sacar(h);
+            comedor.sacar(h);
+            refugio.meter(h);
+            consolaLog("¡La cria" + h.getNombre() + " se resguarda del ataque en el refugio!");
+            esperarAmenaza(h);
+            comprobarPausa();
+            consolaLog("La cria" + h.getNombre() + " ya esta a salvo y sale del refugio");
+            refugio.sacar(h);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public synchronized void esperarAmenaza(Hormiga h) {
+        while (this.Amenaza) {
+            try {
+                wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    // Se notifica a las hormigas que ha terminado el ataque
+    public synchronized void finalizarInvasion() {
+        this.Amenaza = false;
+        notifyAll();
+    }
+
+    public ListaThreads getObrerasTotales() {
+        return obrerasTotales;
+    }
+
+    public void setObrerasTotales(ListaThreads obrerasTotales) {
+        this.obrerasTotales = obrerasTotales;
+    }
+
+    public ListaThreads getSoldadosTotales() {
+        return soldadosTotales;
+    }
+
+    public void setSoldadosTotales(ListaThreads soldadosTotales) {
+        this.soldadosTotales = soldadosTotales;
+    }
+
+    public ListaThreads getCriasTotales() {
+        return criasTotales;
+    }
+
+    public void setCriasTotales(ListaThreads criasTotales) {
+        this.criasTotales = criasTotales;
+    }
+
+    public List<Hormiga> getHormigasTotales() {
+        return hormigasTotales;
+    }
+
+    public void setHormigasTotales(List<Hormiga> hormigasTotales) {
+        this.hormigasTotales = hormigasTotales;
     }
 
 }

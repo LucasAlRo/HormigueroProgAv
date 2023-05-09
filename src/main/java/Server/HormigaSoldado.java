@@ -5,37 +5,39 @@
 package Server;
 
 import static Server.Util.formatoId;
+import java.util.concurrent.BrokenBarrierException;
 
 /**
  *
  * @author lucas
  */
-public class HormigaSoldado extends Hormiga{      
-    
+public class HormigaSoldado extends Hormiga {
+
     // Constructor
     public HormigaSoldado(int idHormiga, Colonia c) {
         super(idHormiga, c);
         setTipo("Soldado");
-        this.setNombre("HS"+ formatoId(idHormiga));
+        this.setNombre("HS" + formatoId(idHormiga));
     }
-    
+
     @Override
     public void run() {
-        
+
         this.getC().consolaLog("La hormiga" + getNombre() + " ha nacido");
         this.getC().entrarColonia(this);
-        
+        int contador = 0;
+
         while (true) {
 
-            for (int k = 0; k <= 10; k++) {
+            if (contador != 6) {  // Cada 6 iteraciones ira a comer
                 this.getC().comenzarEntrenamiento(this);
                 this.getC().terminarEntrenamiento(this);
                 this.getC().descansar(2000, this);
-                System.out.println("Hormiga soldado esta ");
+                contador++;
+            } else {
+                this.getC().comer(3000, this);
+                contador = 0;
             }
-            this.getC().comer(3000, this);
-
         }
     }
-    
 }

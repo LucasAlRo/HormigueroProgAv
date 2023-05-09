@@ -40,10 +40,13 @@ public class Generador extends Thread {
             HormigaObrera oo = new HormigaObrera(k, c);
             try {
                 exterior.meter(oo);
+                c.getObrerasTotales().meter(oo);
+                c.getHormigasTotales().add(oo);
+                oo.start();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Generador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            oo.start();
+            
 
             // Cada tres hormigas obreras, se generan una soldado y una cria
             if (k % 3 == 0 && k != 0) {
@@ -53,6 +56,8 @@ public class Generador extends Thread {
                 try {
                     Thread.sleep(intAleat(800, 3500));
                     exterior.meter(oc);
+                    c.getCriasTotales().meter(oc);
+                    c.getHormigasTotales().add(oc);
                     oc.start();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Generador.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,6 +65,8 @@ public class Generador extends Thread {
                 try {
                     Thread.sleep(intAleat(800, 3500));
                     exterior.meter(os);
+                    c.getSoldadosTotales().meter(os);
+                    c.getHormigasTotales().add(os);
                     os.start();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Generador.class.getName()).log(Level.SEVERE, null, ex);

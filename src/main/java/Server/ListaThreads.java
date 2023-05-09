@@ -14,22 +14,26 @@ import javax.swing.JTextField;
 public class ListaThreads {
     ArrayList<Hormiga> lista;
     JTextField tf;
+    int tamano;
     
     public ListaThreads(JTextField tf)
     {
         lista=new ArrayList<Hormiga>();
         this.tf=tf;
+        this.tamano=0;
     }
     
     public synchronized void meter(Hormiga h) throws InterruptedException
     {
         lista.add(h);
+        tamano++;
         imprimir();
     }
     
     public synchronized void sacar(Hormiga h) throws InterruptedException
     {
         lista.remove(h);
+        tamano--;
         imprimir();
     }
     
@@ -42,5 +46,15 @@ public class ListaThreads {
         }
         tf.setText(contenido);
     }
+
+    public int getTamano() {
+        return tamano;
+    }
+
+    public void setTamano(int tamano) {
+        this.tamano = tamano;
+    }
+    
+    
 }
 
