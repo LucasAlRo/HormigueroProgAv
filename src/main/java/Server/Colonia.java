@@ -41,6 +41,10 @@ public class Colonia {
 
     // Lista de hormigas totales (utilizado en la invasion)
     private List<Hormiga> hormigasTotales;
+    
+    // Lista de hormigas crias comiendo (para RMI)
+    private List<Hormiga> criasComiendo;
+    private List<Hormiga> obrerasInterior;
 
     // Pausa  con monitor
     boolean Pausa = false;
@@ -99,6 +103,8 @@ public class Colonia {
         this.buscando = new ListaThreads(jbuscando);
 
         this.hormigasTotales = new ArrayList<>();
+        this.criasComiendo = new ArrayList<>();
+        this.obrerasInterior = new ArrayList<>();
 
         this.jcontAlmacen = jcontAlmacen;
         this.jcontComedor = jcontComedor;
@@ -124,12 +130,12 @@ public class Colonia {
             consolaLog("La hormiga" + h.getNombre() + " ha entrado en la colonia");
             if (h.getTipo().equals("Obrera")){
                 buscando.sacar(h);
+                obrerasInterior.add(h);
             }
             semEntrada.release();
         } catch (InterruptedException ex) {
             refugiarse(h); //Solamente las hormigas crias son interrumpidas al entrar
         }
-
     }
 
     // Metodo para que  las hormigas salgan de la colonia:
@@ -145,6 +151,7 @@ public class Colonia {
             exterior.meter(h);
             if (h.getTipo().equals("Obrera")){
                 buscando.meter(h);
+                obrerasInterior.remove(h);
             }
             semSalida.release();
         } catch (InterruptedException e) {
@@ -293,6 +300,9 @@ public class Colonia {
             comprobarPausa();
             comedor.meter(h);
             consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");
+            if(h.getTipo().equals("Cria")){
+                criasComiendo.add(h);
+            }
             semComVacio.acquire();
             comprobarPausa();
             consolaLog("La hormiga" + h.getNombre() + " comienza a comer");
@@ -303,6 +313,9 @@ public class Colonia {
             Thread.sleep(tiempo);   // Diferentes tiempos segun la hormiga
             comprobarPausa();
             System.out.println("La hormiga" + h.getNombre() + " ha terminado de comer y se va");
+            if(h.getTipo().equals("Cria")){
+                criasComiendo.remove(h);
+            }
             comedor.sacar(h);
         } catch (InterruptedException ex) {
             if (h.getTipo().equals("Soldado")) {
@@ -472,4 +485,21 @@ public class Colonia {
         this.hormigasTotales = hormigasTotales;
     }
 
+    public ListaThreads getBuscando() {
+        return buscando;
+    }
+
+    public void setBuscando(ListaThreads buscando) {
+        this.buscando = buscando;
+    }
+
+    public Integer getObrerasInterior() {
+        return obrerasInterior.size();
+    }
+
+    public Integer getSoldadosInstruccion(){
+        return instruccion.getTamano();
+    }
+    
+    
 }

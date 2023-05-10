@@ -4,6 +4,11 @@
  */
 package Server;
 
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,13 +19,18 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private boolean botonPulsado = false;
     private Colonia c;
+    private InvocacionesRemotas rmi;
+    private Registry registro;
 
-    public InterfazPrincipal() {
+    public InterfazPrincipal() throws RemoteException {
         initComponents();
         c = new Colonia(jExterior, jColonia, jObreras, jSoldados, jCrias, jInstruccion,
                 jDescanso, jAlmacen, jContAlmacen,
                 jLlevando, jComedor, jContComedor, jDefendiendo, jRefugio,
                 jBuscando);
+        rmi = new InvocacionesRemotas(c);
+        registro = LocateRegistry.createRegistry(1099);
+        registro.rebind("//127.0.0.1/Colonia", rmi);
         Generador generador = new Generador(c);
         generador.start();
     }
@@ -416,7 +426,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazPrincipal().setVisible(true);
+                try {
+                    new InterfazPrincipal().setVisible(true);
+                } catch (RemoteException ex) {
+                    Logger.getLogger(InterfazPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

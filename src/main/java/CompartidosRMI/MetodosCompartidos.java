@@ -5,6 +5,7 @@
 package CompartidosRMI;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /**
  *
@@ -12,5 +13,8 @@ import java.rmi.Remote;
  */
 public interface MetodosCompartidos extends Remote{
     
-    Integer getObrExterior();
+    Integer getObrExterior() throws RemoteException;
+    Integer getObrInterior() throws RemoteException;
+    //Integer getSoldInstruccion() throws RemoteException;
+    
 }
