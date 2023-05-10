@@ -27,7 +27,7 @@ public class Generador extends Thread {
         int SoldCria = 1;
 
         // Bucle for donde "k" es el numero de hormigas a generar (10.000 en el enunciado)
-        for (int k = 1; k <= 10; k++) {
+        for (int k = 1; k <= 10000; k++) {
             try {
                 c.comprobarPausa();
                 // Se espera un tiempo aleatorio entre 0,8 y 3,5 segundos
