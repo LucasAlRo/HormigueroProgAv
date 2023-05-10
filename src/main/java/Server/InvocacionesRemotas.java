@@ -21,13 +21,13 @@ public class InvocacionesRemotas  extends UnicastRemoteObject implements Metodos
     }
     
     @Override 
-    public Integer getObrExterior(){
-        return colonia.getBuscando().getTamano();
+    public Integer getNObrExterior(){
+        return this.colonia.getNBuscando();
     }
     
     @Override
-    public Integer getObrInterior(){
-        return (colonia.getObrerasInterior());
+    public Integer getNObrInterior(){
+        return this.colonia.getNObrerasInterior();
     }
     
 }

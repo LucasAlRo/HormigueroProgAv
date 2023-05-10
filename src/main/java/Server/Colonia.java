@@ -41,7 +41,7 @@ public class Colonia {
 
     // Lista de hormigas totales (utilizado en la invasion)
     private List<Hormiga> hormigasTotales;
-    
+
     // Lista de hormigas crias comiendo (para RMI)
     private List<Hormiga> criasComiendo;
     private List<Hormiga> obrerasInterior;
@@ -128,8 +128,7 @@ public class Colonia {
             colonia.meter(h);
             exterior.sacar(h);
             consolaLog("La hormiga" + h.getNombre() + " ha entrado en la colonia");
-            if (h.getTipo().equals("Obrera")){
-                buscando.sacar(h);
+            if (h.getTipo().equals("Obrera")) {
                 obrerasInterior.add(h);
             }
             semEntrada.release();
@@ -149,7 +148,7 @@ public class Colonia {
             consolaLog("La hormiga" + h.getNombre() + " sale de la colonia");
             colonia.sacar(h);
             exterior.meter(h);
-            if (h.getTipo().equals("Obrera")){
+            if (h.getTipo().equals("Obrera")) {
                 buscando.meter(h);
                 obrerasInterior.remove(h);
             }
@@ -159,7 +158,6 @@ public class Colonia {
         }
     }
 
-    
     // Metodo para que las hormigas solado entrenen:
     public void comenzarEntrenamiento(Hormiga h) {
         try {
@@ -300,7 +298,7 @@ public class Colonia {
             comprobarPausa();
             comedor.meter(h);
             consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");
-            if(h.getTipo().equals("Cria")){
+            if (h.getTipo().equals("Cria")) {
                 criasComiendo.add(h);
             }
             semComVacio.acquire();
@@ -313,7 +311,7 @@ public class Colonia {
             Thread.sleep(tiempo);   // Diferentes tiempos segun la hormiga
             comprobarPausa();
             System.out.println("La hormiga" + h.getNombre() + " ha terminado de comer y se va");
-            if(h.getTipo().equals("Cria")){
+            if (h.getTipo().equals("Cria")) {
                 criasComiendo.remove(h);
             }
             comedor.sacar(h);
@@ -435,7 +433,7 @@ public class Colonia {
             Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     // Metodo para que las crias esperen a que cese la amenaza
     public synchronized void esperarAmenaza(Hormiga h) {
         while (this.Amenaza) {
@@ -485,21 +483,23 @@ public class Colonia {
         this.hormigasTotales = hormigasTotales;
     }
 
-    public ListaThreads getBuscando() {
-        return buscando;
+    public Integer getNBuscando() {
+        return buscando.getTamano();
     }
 
     public void setBuscando(ListaThreads buscando) {
         this.buscando = buscando;
     }
 
-    public Integer getObrerasInterior() {
+    public Integer getNObrerasInterior() {
         return obrerasInterior.size();
     }
 
-    public Integer getSoldadosInstruccion(){
+    public Integer getSoldadosInstruccion() {
         return instruccion.getTamano();
     }
-    
-    
+
+    public ListaThreads getBuscando() {
+        return this.buscando;
+    }
 }

@@ -30,6 +30,7 @@ public class HormigaObrera extends Hormiga {
                     if ((getIdhormiga()%2)!=0){
                         this.getC().salirColonia(this);
                         Thread.sleep(4000);
+                        this.getC().getBuscando().sacar(this);
                         this.getC().entrarColonia(this);
                         this.getC().reponerAlmacen(this); 
                     }

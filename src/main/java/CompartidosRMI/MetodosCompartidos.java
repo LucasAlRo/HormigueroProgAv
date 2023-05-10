@@ -13,8 +13,6 @@ import java.rmi.RemoteException;
  */
 public interface MetodosCompartidos extends Remote{
     
-    Integer getObrExterior() throws RemoteException;
-    Integer getObrInterior() throws RemoteException;
-    //Integer getSoldInstruccion() throws RemoteException;
-    
+    Integer getNObrExterior() throws RemoteException;
+    Integer getNObrInterior() throws RemoteException;
 }

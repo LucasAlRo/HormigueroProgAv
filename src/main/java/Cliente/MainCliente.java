@@ -14,7 +14,7 @@ import java.rmi.registry.Registry;
  *
  * @author lucas
  */
-public class MainRemoto {
+public class MainCliente {
 
     /**
      * @param args the command line arguments
@@ -22,11 +22,12 @@ public class MainRemoto {
     public static void main(String[] args) throws RemoteException, NotBoundException {
         // TODO code application logic here
         Registry registro = LocateRegistry.getRegistry("127.0.0.1", 1099);
-        MetodosCompartidos obj = (MetodosCompartidos) registro.lookup("//127.0.0.1/Colonia");
-        InterfazRemota interfazCliente = new InterfazRemota(obj);
-        interfazCliente.setVisible(true);
-        while(true){
-            interfazCliente.actualizarInterfaz();
+        MetodosCompartidos metodos = (MetodosCompartidos) registro.lookup("//127.0.0.1/Colonia");
+        InterfazCliente iCliente = new InterfazCliente(metodos);
+        iCliente.setVisible(true);
+        
+        while (true){
+            iCliente.actualizar();
         }
     }
     
