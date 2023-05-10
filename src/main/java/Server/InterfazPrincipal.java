@@ -14,12 +14,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private boolean botonPulsado = false;
     private Colonia c;
-    
+
     public InterfazPrincipal() {
         initComponents();
         c = new Colonia(jExterior, jColonia, jObreras, jSoldados, jCrias, jInstruccion,
-                jDescanso, jAlmacen, jContAlmacen, 
-                jLlevando, jComedor, jContComedor, jDefendiendo, jRefugio);
+                jDescanso, jAlmacen, jContAlmacen,
+                jLlevando, jComedor, jContComedor, jDefendiendo, jRefugio,
+                jBuscando);
         Generador generador = new Generador(c);
         generador.start();
     }
@@ -43,7 +44,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLlevando = new javax.swing.JTextField();
         jComedor = new javax.swing.JTextField();
         jContComedor = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jDefendiendo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -65,6 +65,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jBuscando = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,11 +122,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jContComedor.setText("0");
 
-        jLabel1.setText("Hormigas en el exterior:");
-
         jLabel2.setText("Hormigas repeliendo un insecto invasor:");
 
-        jDefendiendo.setText("DEFENSA");
         jDefendiendo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDefendiendoActionPerformed(evt);
@@ -151,7 +150,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jLabel11.setText("Comida en el comedor:");
 
-        jRefugio.setText("REFUGIO");
         jRefugio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRefugioActionPerformed(evt);
@@ -181,6 +179,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         jLabel16.setText("Crias:");
 
+        jLabel17.setText("Hormigas buscando comida:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,83 +188,81 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDefendiendo))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jExterior))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jContComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(33, 33, 33)
+                        .addComponent(jExterior))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jInstruccion, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                                .addComponent(jAlmacen)
+                                .addComponent(jLlevando)
+                                .addComponent(jDescanso))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComedor)
+                            .addComponent(jRefugio)
+                            .addComponent(jSoldados)
+                            .addComponent(jCrias)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jInstruccion, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
-                                        .addComponent(jAlmacen)
-                                        .addComponent(jLlevando)
-                                        .addComponent(jDescanso))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComedor)
-                                    .addComponent(jRefugio)
-                                    .addComponent(jSoldados)
-                                    .addComponent(jCrias)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jBotonPausa)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jAmenazaInsecto)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jObreras))))
-                        .addGap(18, 18, 18))))
+                                .addComponent(jBotonPausa)
+                                .addGap(18, 18, 18)
+                                .addComponent(jAmenazaInsecto)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jObreras)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jContAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jContComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBuscando)
+                            .addComponent(jDefendiendo))))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jExterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jExterior, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jDefendiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDefendiendo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jBuscando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,17 +328,16 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jInstruccionActionPerformed
 
     private void jBotonPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonPausaActionPerformed
-        if(!botonPulsado) //Si no se ha pulsado
-        {                 
-            botonPulsado=true;             
-            jBotonPausa.setText("Reanudar");  
+        if (!botonPulsado) //Si no se ha pulsado
+        {
+            botonPulsado = true;
+            jBotonPausa.setText("Reanudar");
             c.pausar();
             c.consolaLog("Se ha pausado la ejecucion del programa");
-        }
-        else //Si ya se había pulsado
-        {                           
-            botonPulsado=false;           
-            jBotonPausa.setText("Detener"); 
+        } else //Si ya se había pulsado
+        {
+            botonPulsado = false;
+            jBotonPausa.setText("Detener");
             c.reanudar();
             c.consolaLog("Se ha reanudado la ejecucion del programa");
         }
@@ -372,14 +369,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void jAmenazaInsectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAmenazaInsectoActionPerformed
         // TODO add your handling code here:
-        if (c.comprobarAmenaza()){
+        if (c.comprobarAmenaza()) {
             JOptionPane.showMessageDialog(null, "¡La colonia no aguantará dos insectos!");
-        }
-        else if (c.getSoldadosTotales().getTamano()==0){
+        } else if (c.getSoldadosTotales().getTamano() == 0) {
             JOptionPane.showMessageDialog(null, "¡Aún no hay soldados! ¡No podrán defenderse!");
-        }
-        else{
-            c.generarInsectoInvasor(); 
+        } else {
+            c.generarInsectoInvasor();
         }
     }//GEN-LAST:event_jAmenazaInsectoActionPerformed
 
@@ -430,6 +425,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jAlmacen;
     private javax.swing.JToggleButton jAmenazaInsecto;
     private javax.swing.JButton jBotonPausa;
+    private javax.swing.JTextField jBuscando;
     private javax.swing.JTextField jColonia;
     private javax.swing.JTextField jComedor;
     private javax.swing.JTextField jContAlmacen;
@@ -439,7 +435,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jDescanso;
     private javax.swing.JTextField jExterior;
     private javax.swing.JTextField jInstruccion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -447,6 +442,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

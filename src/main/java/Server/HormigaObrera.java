@@ -27,7 +27,7 @@ public class HormigaObrera extends Hormiga {
         while(true){
             try{
                 for(int i = 0; i<=10; i++){
-                    if ((getIdhormiga()%2)==0){
+                    if ((getIdhormiga()%2)!=0){
                         this.getC().salirColonia(this);
                         Thread.sleep(4000);
                         this.getC().entrarColonia(this);

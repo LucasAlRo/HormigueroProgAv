@@ -27,6 +27,7 @@ public class Colonia {
     // Ubicaciones de la colonia:
     private ListaThreads colonia;
     private ListaThreads obrerasTotales;
+    private ListaThreads buscando;
     private ListaThreads soldadosTotales;
     private ListaThreads criasTotales;
     private ListaThreads exterior;
@@ -81,7 +82,7 @@ public class Colonia {
             JTextField jinstruccion, JTextField jdescanso,
             JTextField jalmacen, JTextField jcontAlmacen, JTextField jllevando,
             JTextField jcomedor, JTextField jcontComedor, JTextField jdefendiendo,
-            JTextField jrefugio) {
+            JTextField jrefugio, JTextField jbuscando) {
 
         this.exterior = new ListaThreads(jexterior);
         this.colonia = new ListaThreads(jcolonia);
@@ -95,6 +96,7 @@ public class Colonia {
         this.comedor = new ListaThreads(jcomedor);
         this.defendiendo = new ListaThreads(jdefendiendo);
         this.refugio = new ListaThreads(jrefugio);
+        this.buscando = new ListaThreads(jbuscando);
 
         this.hormigasTotales = new ArrayList<>();
 
@@ -120,6 +122,9 @@ public class Colonia {
             colonia.meter(h);
             exterior.sacar(h);
             consolaLog("La hormiga" + h.getNombre() + " ha entrado en la colonia");
+            if (h.getTipo().equals("Obrera")){
+                buscando.sacar(h);
+            }
             semEntrada.release();
         } catch (InterruptedException ex) {
             refugiarse(h); //Solamente las hormigas crias son interrumpidas al entrar
@@ -138,12 +143,16 @@ public class Colonia {
             consolaLog("La hormiga" + h.getNombre() + " sale de la colonia");
             colonia.sacar(h);
             exterior.meter(h);
+            if (h.getTipo().equals("Obrera")){
+                buscando.meter(h);
+            }
             semSalida.release();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
+    
     // Metodo para que las hormigas solado entrenen:
     public void comenzarEntrenamiento(Hormiga h) {
         try {
