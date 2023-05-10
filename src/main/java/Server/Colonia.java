@@ -194,9 +194,14 @@ public class Colonia {
             if (h.getTipo().equals("Soldado")) {
                 consolaLog("La hormiga" + h.getNombre() + " deja de descansar y va a defender la colonia");
                 defenderColonia(h);
-            } else {
-                consolaLog("La cria" + h.getNombre() + " deja de descansar y se va al refugio");
-                refugiarse(h);
+            } else if (h.getTipo().equals("Cria")){
+                try {
+                    consolaLog("La cria" + h.getNombre() + " deja de descansar y se va al refugio");
+                    descanso.sacar(h);
+                    refugiarse(h);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         dejarDescanso(h);
@@ -298,9 +303,6 @@ public class Colonia {
             comprobarPausa();
             comedor.meter(h);
             consolaLog("La hormiga" + h.getNombre() + " tiene hambre y se mete al comedor");
-            if (h.getTipo().equals("Cria")) {
-                criasComiendo.add(h);
-            }
             semComVacio.acquire();
             comprobarPausa();
             consolaLog("La hormiga" + h.getNombre() + " comienza a comer");
@@ -311,17 +313,19 @@ public class Colonia {
             Thread.sleep(tiempo);   // Diferentes tiempos segun la hormiga
             comprobarPausa();
             System.out.println("La hormiga" + h.getNombre() + " ha terminado de comer y se va");
-            if (h.getTipo().equals("Cria")) {
-                criasComiendo.remove(h);
-            }
             comedor.sacar(h);
         } catch (InterruptedException ex) {
             if (h.getTipo().equals("Soldado")) {
                 consolaLog("La hormiga" + h.getNombre() + " deja de comer y va a defender la colonia");
                 defenderColonia(h);
             } else {
-                consolaLog("La cria" + h.getNombre() + " deja de comer y va a refugiarse");
-                refugiarse(h);
+                try {
+                    consolaLog("La cria" + h.getNombre() + " deja de comer y va a refugiarse");
+                    comedor.sacar(h);
+                    refugiarse(h);
+                } catch (InterruptedException ex1) {
+                    Logger.getLogger(Colonia.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             }
         }
 
@@ -421,8 +425,6 @@ public class Colonia {
     public void refugiarse(Hormiga h) {
         try {
             comprobarPausa();
-            descanso.sacar(h);
-            comedor.sacar(h);
             refugio.meter(h);
             consolaLog("¡La cria" + h.getNombre() + " se resguarda del ataque en el refugio!");
             esperarAmenaza(h);
@@ -495,8 +497,28 @@ public class Colonia {
         return obrerasInterior.size();
     }
 
-    public Integer getSoldadosInstruccion() {
+    public Integer getNSoldadosInstruccion() {
         return instruccion.getTamano();
+    }
+    
+    public Integer getNSoldadosDefendiendo(){
+        return this.defendiendo.getTamano();
+    }
+    
+    public Integer getNCriasComedor() {
+        return this.criasComiendo.size();
+    }
+    
+    public List<Hormiga> getCriasComedor(){
+        return this.criasComiendo;
+    }
+    
+    public Integer getNCriasRefugio(){
+        return this.refugio.getTamano();
+    }
+    
+    public Integer getNSoldadosTotales(){
+        return this.soldadosTotales.getTamano();
     }
 
     public ListaThreads getBuscando() {

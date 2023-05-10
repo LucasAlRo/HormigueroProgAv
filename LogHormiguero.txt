@@ -1,63 +1,251 @@
-10/05/2023 19:08:00-> La hormigaHO0001 ha nacido
-10/05/2023 19:08:00-> La hormigaHO0001 se mete en en tunel de entrada
-10/05/2023 19:08:00-> La hormigaHO0001 ha entrado en la colonia
-10/05/2023 19:08:00-> La hormigaHO0001 sale de la colonia
-10/05/2023 19:08:04-> La hormigaHO0002 ha nacido
-10/05/2023 19:08:04-> La hormigaHO0002 se mete en en tunel de entrada
-10/05/2023 19:08:04-> La hormigaHO0002 ha entrado en la colonia
-10/05/2023 19:08:04-> La hormigaHO0002se  acerca al almacen para recoger comida
-10/05/2023 19:08:04-> La hormigaHO0002accede al almacen para recoger comida
-10/05/2023 19:08:04-> La hormigaHO0001 se mete en en tunel de entrada
-10/05/2023 19:08:05-> La hormigaHO0001 ha entrado en la colonia
-10/05/2023 19:08:05-> La hormigaHO0001se  acerca al almacen para depositar comida
-10/05/2023 19:08:05-> La hormigaHO0001accede al almacen  para depositar comida
-10/05/2023 19:08:06-> La hormigaHO0003 ha nacido
-10/05/2023 19:08:06-> La hormigaHO0003 se mete en en tunel de entrada
-10/05/2023 19:08:06-> La hormigaHO0003 ha entrado en la colonia
-10/05/2023 19:08:06-> La hormigaHO0003 sale de la colonia
-10/05/2023 19:08:08-> La hormigaHO0001deposita comida en el almacen
-10/05/2023 19:08:08-> La hormigaHO0001abandona el almacen
-10/05/2023 19:08:08-> La hormigaHO0001 sale de la colonia
-10/05/2023 19:08:09-> La hormigaHO0002recoge comida del almacen
-10/05/2023 19:08:09-> La hormigaHO0002 se lleva comida del almacen
-10/05/2023 19:08:09-> La hormigaHO0002 lleva comida al comedor
-10/05/2023 19:08:09-> La hormigaHC0001 ha nacido
-10/05/2023 19:08:09-> La hormigaHC0001 se mete en en tunel de entrada
-10/05/2023 19:08:09-> La hormigaHC0001 ha entrado en la colonia
-10/05/2023 19:08:09-> La hormigaHC0001 tiene hambre y se mete al comedor
-10/05/2023 19:08:10-> La hormigaHO0003 se mete en en tunel de entrada
-10/05/2023 19:08:10-> La hormigaHO0003 ha entrado en la colonia
-10/05/2023 19:08:10-> La hormigaHO0003se  acerca al almacen para depositar comida
-10/05/2023 19:08:10-> La hormigaHO0003accede al almacen  para depositar comida
-10/05/2023 19:08:11-> La hormigaHO0002 llega al comedor con comida
-10/05/2023 19:08:11-> La hormigaHS0001 ha nacido
-10/05/2023 19:08:11-> La hormigaHS0001 se mete en en tunel de entrada
-10/05/2023 19:08:11-> La hormigaHS0001 ha entrado en la colonia
-10/05/2023 19:08:11-> La hormigaHS0001 comienza a entrenar
-10/05/2023 19:08:12-> La hormigaHO0001 se mete en en tunel de entrada
-10/05/2023 19:08:12-> La hormigaHO0001 ha entrado en la colonia
-10/05/2023 19:08:12-> La hormigaHO0001se  acerca al almacen para depositar comida
-10/05/2023 19:08:12-> La hormigaHO0001accede al almacen  para depositar comida
-10/05/2023 19:08:12-> La hormigaHO0004 ha nacido
-10/05/2023 19:08:12-> La hormigaHO0004 se mete en en tunel de entrada
-10/05/2023 19:08:12-> La hormigaHO0004 ha entrado en la colonia
-10/05/2023 19:08:12-> La hormigaHO0004se  acerca al almacen para recoger comida
-10/05/2023 19:08:12-> La hormigaHO0004accede al almacen para recoger comida
-10/05/2023 19:08:12-> La hormigaHO0002 deja la comida en el comedor
-10/05/2023 19:08:12-> La hormigaHO0002 abandona el comedor
-10/05/2023 19:08:12-> La hormigaHO0002se  acerca al almacen para recoger comida
-10/05/2023 19:08:12-> La hormigaHO0002accede al almacen para recoger comida
-10/05/2023 19:08:12-> La hormigaHC0001 comienza a comer
-10/05/2023 19:08:14-> La hormigaHO0003deposita comida en el almacen
-10/05/2023 19:08:14-> La hormigaHO0003abandona el almacen
-10/05/2023 19:08:14-> La hormigaHO0003 sale de la colonia
-10/05/2023 19:08:14-> La hormigaHO0005 ha nacido
-10/05/2023 19:08:14-> La hormigaHO0005 se mete en en tunel de entrada
-10/05/2023 19:08:14-> La hormigaHO0005 ha entrado en la colonia
-10/05/2023 19:08:14-> La hormigaHO0005 sale de la colonia
-10/05/2023 19:08:16-> La hormigaHS0001 ha terminado de entrenar
-10/05/2023 19:08:16-> La hormigaHS0001 se va a la sala de descanso
-10/05/2023 19:08:16-> La hormigaHC0001 se va a la sala de descanso
-10/05/2023 19:08:17-> La hormigaHO0001deposita comida en el almacen
-10/05/2023 19:08:17-> La hormigaHO0001abandona el almacen
-10/05/2023 19:08:17-> La hormigaHO0001 sale de la colonia
+10/05/2023 19:47:32-> La hormigaHO0001 ha nacido
+10/05/2023 19:47:32-> La hormigaHO0001 se mete en en tunel de entrada
+10/05/2023 19:47:32-> La hormigaHO0001 ha entrado en la colonia
+10/05/2023 19:47:32-> La hormigaHO0001 sale de la colonia
+10/05/2023 19:47:34-> La hormigaHO0002 ha nacido
+10/05/2023 19:47:34-> La hormigaHO0002 se mete en en tunel de entrada
+10/05/2023 19:47:35-> La hormigaHO0002 ha entrado en la colonia
+10/05/2023 19:47:35-> La hormigaHO0002se  acerca al almacen para recoger comida
+10/05/2023 19:47:35-> La hormigaHO0002accede al almacen para recoger comida
+10/05/2023 19:47:36-> La hormigaHO0001 se mete en en tunel de entrada
+10/05/2023 19:47:36-> La hormigaHO0001 ha entrado en la colonia
+10/05/2023 19:47:36-> La hormigaHO0001se  acerca al almacen para depositar comida
+10/05/2023 19:47:36-> La hormigaHO0001accede al almacen  para depositar comida
+10/05/2023 19:47:37-> La hormigaHO0003 ha nacido
+10/05/2023 19:47:37-> La hormigaHO0003 se mete en en tunel de entrada
+10/05/2023 19:47:37-> La hormigaHO0003 ha entrado en la colonia
+10/05/2023 19:47:37-> La hormigaHO0003 sale de la colonia
+10/05/2023 19:47:38-> La hormigaHO0001deposita comida en el almacen
+10/05/2023 19:47:38-> La hormigaHO0001abandona el almacen
+10/05/2023 19:47:38-> La hormigaHO0001 sale de la colonia
+10/05/2023 19:47:40-> La hormigaHC0001 ha nacido
+10/05/2023 19:47:40-> La hormigaHC0001 se mete en en tunel de entrada
+10/05/2023 19:47:40-> La hormigaHO0002recoge comida del almacen
+10/05/2023 19:47:40-> La hormigaHO0002 se lleva comida del almacen
+10/05/2023 19:47:40-> La hormigaHO0002 lleva comida al comedor
+10/05/2023 19:47:40-> La hormigaHC0001 ha entrado en la colonia
+10/05/2023 19:47:40-> La hormigaHC0001 tiene hambre y se mete al comedor
+10/05/2023 19:47:41-> La hormigaHS0001 ha nacido
+10/05/2023 19:47:41-> La hormigaHS0001 se mete en en tunel de entrada
+10/05/2023 19:47:41-> La hormigaHS0001 ha entrado en la colonia
+10/05/2023 19:47:41-> La hormigaHO0003 se mete en en tunel de entrada
+10/05/2023 19:47:41-> La hormigaHS0001 comienza a entrenar
+10/05/2023 19:47:41-> La hormigaHO0002 llega al comedor con comida
+10/05/2023 19:47:42-> La hormigaHO0003 ha entrado en la colonia
+10/05/2023 19:47:42-> La hormigaHO0003se  acerca al almacen para depositar comida
+10/05/2023 19:47:42-> La hormigaHO0003accede al almacen  para depositar comida
+10/05/2023 19:47:42-> ¡Un insecto está atacando la colonia!
+10/05/2023 19:47:42-> La criaHC0001 deja de comer y va a refugiarse
+10/05/2023 19:47:42-> La hormigaHS0001 deja de entrenar y va a defender la colonia
+10/05/2023 19:47:42-> ¡La criaHC0001 se resguarda del ataque en el refugio!
+10/05/2023 19:47:42-> La hormigaHS0001 sale de la colonia
+10/05/2023 19:47:42-> ¡La hormigaHS0001 se encuentra en  el frente defensivo!
+10/05/2023 19:47:42-> ¡La hormigaHS0001 lucha contra el insecto atacante!
+10/05/2023 19:47:42-> La hormigaHO0001 se mete en en tunel de entrada
+10/05/2023 19:47:42-> La hormigaHO0001 ha entrado en la colonia
+10/05/2023 19:47:42-> La hormigaHO0001se  acerca al almacen para depositar comida
+10/05/2023 19:47:42-> La hormigaHO0001accede al almacen  para depositar comida
+10/05/2023 19:47:43-> La hormigaHO0002 deja la comida en el comedor
+10/05/2023 19:47:43-> La hormigaHO0002 abandona el comedor
+10/05/2023 19:47:43-> La hormigaHO0002se  acerca al almacen para recoger comida
+10/05/2023 19:47:43-> La hormigaHO0002accede al almacen para recoger comida
+10/05/2023 19:47:44-> La hormigaHO0003deposita comida en el almacen
+10/05/2023 19:47:44-> La hormigaHO0003abandona el almacen
+10/05/2023 19:47:44-> La hormigaHO0003 sale de la colonia
+10/05/2023 19:47:44-> La hormigaHO0004 ha nacido
+10/05/2023 19:47:44-> La hormigaHO0004 se mete en en tunel de entrada
+10/05/2023 19:47:44-> La hormigaHO0004 ha entrado en la colonia
+10/05/2023 19:47:44-> La hormigaHO0004se  acerca al almacen para recoger comida
+10/05/2023 19:47:44-> La hormigaHO0004accede al almacen para recoger comida
+10/05/2023 19:47:47-> La hormigaHO0005 ha nacido
+10/05/2023 19:47:47-> La hormigaHO0005 se mete en en tunel de entrada
+10/05/2023 19:47:47-> La hormigaHO0005 ha entrado en la colonia
+10/05/2023 19:47:47-> La hormigaHO0005 sale de la colonia
+10/05/2023 19:47:48-> La hormigaHO0001deposita comida en el almacen
+10/05/2023 19:47:48-> La hormigaHO0001abandona el almacen
+10/05/2023 19:47:48-> La hormigaHO0001 sale de la colonia
+10/05/2023 19:47:48-> La hormigaHO0003 se mete en en tunel de entrada
+10/05/2023 19:47:48-> La hormigaHO0003 ha entrado en la colonia
+10/05/2023 19:47:48-> La hormigaHO0003se  acerca al almacen para depositar comida
+10/05/2023 19:47:48-> La hormigaHO0003accede al almacen  para depositar comida
+10/05/2023 19:47:49-> La hormigaHO0002recoge comida del almacen
+10/05/2023 19:47:49-> La hormigaHO0002 se lleva comida del almacen
+10/05/2023 19:47:49-> La hormigaHO0002 lleva comida al comedor
+10/05/2023 19:47:50-> La hormigaHO0006 ha nacido
+10/05/2023 19:47:50-> La hormigaHO0006 se mete en en tunel de entrada
+10/05/2023 19:47:50-> La hormigaHO0006 ha entrado en la colonia
+10/05/2023 19:47:50-> La hormigaHO0006se  acerca al almacen para recoger comida
+10/05/2023 19:47:50-> La hormigaHO0006accede al almacen para recoger comida
+10/05/2023 19:47:51-> La hormigaHO0004recoge comida del almacen
+10/05/2023 19:47:51-> La hormigaHO0004 se lleva comida del almacen
+10/05/2023 19:47:51-> La hormigaHO0004 lleva comida al comedor
+10/05/2023 19:47:51-> La hormigaHO0005 se mete en en tunel de entrada
+10/05/2023 19:47:52-> La hormigaHO0005 ha entrado en la colonia
+10/05/2023 19:47:52-> La hormigaHO0005se  acerca al almacen para depositar comida
+10/05/2023 19:47:52-> La hormigaHO0005accede al almacen  para depositar comida
+10/05/2023 19:47:52-> La hormigaHO0002 llega al comedor con comida
+10/05/2023 19:47:52-> La hormigaHC0002 ha nacido
+10/05/2023 19:47:52-> La hormigaHC0002 se mete en en tunel de entrada
+10/05/2023 19:47:52-> La hormigaHC0002 ha entrado en la colonia
+10/05/2023 19:47:52-> La hormigaHC0002 tiene hambre y se mete al comedor
+10/05/2023 19:47:52-> La criaHC0002 deja de comer y va a refugiarse
+10/05/2023 19:47:52-> ¡La criaHC0002 se resguarda del ataque en el refugio!
+10/05/2023 19:47:52-> La hormigaHO0001 se mete en en tunel de entrada
+10/05/2023 19:47:52-> La hormigaHO0001 ha entrado en la colonia
+10/05/2023 19:47:52-> La hormigaHO0001se  acerca al almacen para depositar comida
+10/05/2023 19:47:52-> La hormigaHO0001accede al almacen  para depositar comida
+10/05/2023 19:47:53-> La hormigaHO0004 llega al comedor con comida
+10/05/2023 19:47:53-> La hormigaHO0003deposita comida en el almacen
+10/05/2023 19:47:53-> La hormigaHO0003abandona el almacen
+10/05/2023 19:47:53-> La hormigaHO0003 sale de la colonia
+10/05/2023 19:47:53-> La hormigaHS0002 ha nacido
+10/05/2023 19:47:53-> La hormigaHS0002 se mete en en tunel de entrada
+10/05/2023 19:47:53-> La hormigaHS0002 ha entrado en la colonia
+10/05/2023 19:47:53-> La hormigaHS0002 comienza a entrenar
+10/05/2023 19:47:54-> La hormigaHO0002 deja la comida en el comedor
+10/05/2023 19:47:54-> La hormigaHO0002 abandona el comedor
+10/05/2023 19:47:54-> La hormigaHO0002se  acerca al almacen para recoger comida
+10/05/2023 19:47:54-> La hormigaHO0002accede al almacen para recoger comida
+10/05/2023 19:47:54-> La hormigaHO0004 deja la comida en el comedor
+10/05/2023 19:47:54-> La hormigaHO0004 abandona el comedor
+10/05/2023 19:47:54-> La hormigaHO0004se  acerca al almacen para recoger comida
+10/05/2023 19:47:54-> La hormigaHO0004accede al almacen para recoger comida
+10/05/2023 19:47:55-> La hormigaHO0007 ha nacido
+10/05/2023 19:47:55-> La hormigaHO0007 se mete en en tunel de entrada
+10/05/2023 19:47:56-> La hormigaHO0007 ha entrado en la colonia
+10/05/2023 19:47:56-> La hormigaHO0005deposita comida en el almacen
+10/05/2023 19:47:56-> La hormigaHO0005abandona el almacen
+10/05/2023 19:47:56-> La hormigaHO0007 sale de la colonia
+10/05/2023 19:47:56-> La hormigaHO0005 sale de la colonia
+10/05/2023 19:47:56-> La hormigaHO0008 ha nacido
+10/05/2023 19:47:56-> La hormigaHO0008 se mete en en tunel de entrada
+10/05/2023 19:47:56-> La hormigaHO0008 ha entrado en la colonia
+10/05/2023 19:47:56-> La hormigaHO0008se  acerca al almacen para recoger comida
+10/05/2023 19:47:56-> La hormigaHO0008accede al almacen para recoger comida
+10/05/2023 19:47:57-> La hormigaHO0003 se mete en en tunel de entrada
+10/05/2023 19:47:57-> La hormigaHO0003 ha entrado en la colonia
+10/05/2023 19:47:57-> La hormigaHO0003se  acerca al almacen para depositar comida
+10/05/2023 19:47:57-> La hormigaHO0003accede al almacen  para depositar comida
+10/05/2023 19:47:59-> La hormigaHO0009 ha nacido
+10/05/2023 19:47:59-> La hormigaHO0009 se mete en en tunel de entrada
+10/05/2023 19:47:59-> La hormigaHO0009 ha entrado en la colonia
+10/05/2023 19:47:59-> La hormigaHO0009 sale de la colonia
+10/05/2023 19:47:59-> La hormigaHO0001deposita comida en el almacen
+10/05/2023 19:47:59-> La hormigaHO0001abandona el almacen
+10/05/2023 19:47:59-> La hormigaHO0001 sale de la colonia
+10/05/2023 19:48:00-> La hormigaHO0007 se mete en en tunel de entrada
+10/05/2023 19:48:00-> La hormigaHO0007 ha entrado en la colonia
+10/05/2023 19:48:00-> La hormigaHO0007se  acerca al almacen para depositar comida
+10/05/2023 19:48:00-> La hormigaHO0005 se mete en en tunel de entrada
+10/05/2023 19:48:00-> La hormigaHO0007accede al almacen  para depositar comida
+10/05/2023 19:48:00-> La hormigaHO0005 ha entrado en la colonia
+10/05/2023 19:48:00-> La hormigaHO0005se  acerca al almacen para depositar comida
+10/05/2023 19:48:00-> La hormigaHO0005accede al almacen  para depositar comida
+10/05/2023 19:48:00-> La hormigaHS0002 ha terminado de entrenar
+10/05/2023 19:48:00-> La hormigaHS0002 se va a la sala de descanso
+10/05/2023 19:48:01-> La hormigaHO0006recoge comida del almacen
+10/05/2023 19:48:01-> La hormigaHO0006 se lleva comida del almacen
+10/05/2023 19:48:01-> La hormigaHO0006 lleva comida al comedor
+10/05/2023 19:48:02-> La hormigaHC0003 ha nacido
+10/05/2023 19:48:02-> La hormigaHC0003 se mete en en tunel de entrada
+10/05/2023 19:48:02-> ¡La hormigaHS0001 ha vencido al insecto!
+10/05/2023 19:48:02-> La criaHC0002 ya esta a salvo y sale del refugio
+10/05/2023 19:48:02-> La criaHC0001 ya esta a salvo y sale del refugio
+10/05/2023 19:48:02-> La hormigaHC0002 se va a la sala de descanso
+10/05/2023 19:48:02-> La hormigaHC0001 se va a la sala de descanso
+10/05/2023 19:48:02-> La hormigaHC0003 ha entrado en la colonia
+10/05/2023 19:48:02-> La hormigaHS0001 se mete en en tunel de entrada
+10/05/2023 19:48:02-> La hormigaHC0003 tiene hambre y se mete al comedor
+10/05/2023 19:48:02-> La hormigaHC0003 comienza a comer
+10/05/2023 19:48:02-> La hormigaHS0001 ha entrado en la colonia
+10/05/2023 19:48:02-> La hormigaHS0001 ha terminado de entrenar
+10/05/2023 19:48:02-> La hormigaHS0001 se va a la sala de descanso
+10/05/2023 19:48:02-> La hormigaHS0002 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:02-> La hormigaHS0002 comienza a entrenar
+10/05/2023 19:48:03-> La hormigaHO0006 llega al comedor con comida
+10/05/2023 19:48:03-> La hormigaHO0009 se mete en en tunel de entrada
+10/05/2023 19:48:03-> La hormigaHO0009 ha entrado en la colonia
+10/05/2023 19:48:03-> La hormigaHO0009se  acerca al almacen para depositar comida
+10/05/2023 19:48:03-> La hormigaHO0009accede al almacen  para depositar comida
+10/05/2023 19:48:03-> La hormigaHO0002recoge comida del almacen
+10/05/2023 19:48:03-> La hormigaHO0002 se lleva comida del almacen
+10/05/2023 19:48:03-> La hormigaHO0002 lleva comida al comedor
+10/05/2023 19:48:03-> La hormigaHO0001 se mete en en tunel de entrada
+10/05/2023 19:48:03-> La hormigaHO0001 ha entrado en la colonia
+10/05/2023 19:48:03-> La hormigaHO0001se  acerca al almacen para depositar comida
+10/05/2023 19:48:03-> La hormigaHO0001accede al almacen  para depositar comida
+10/05/2023 19:48:04-> La hormigaHS0001 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:04-> La hormigaHS0001 comienza a entrenar
+10/05/2023 19:48:04-> La hormigaHS0003 ha nacido
+10/05/2023 19:48:04-> La hormigaHS0003 se mete en en tunel de entrada
+10/05/2023 19:48:04-> La hormigaHS0003 ha entrado en la colonia
+10/05/2023 19:48:04-> La hormigaHS0003 comienza a entrenar
+10/05/2023 19:48:04-> La hormigaHO0006 deja la comida en el comedor
+10/05/2023 19:48:04-> La hormigaHO0006 abandona el comedor
+10/05/2023 19:48:04-> La hormigaHO0006se  acerca al almacen para recoger comida
+10/05/2023 19:48:04-> La hormigaHO0006accede al almacen para recoger comida
+10/05/2023 19:48:04-> La hormigaHO0002 llega al comedor con comida
+10/05/2023 19:48:04-> La hormigaHS0002 ha terminado de entrenar
+10/05/2023 19:48:04-> La hormigaHS0002 se va a la sala de descanso
+10/05/2023 19:48:06-> La hormigaHO0002 deja la comida en el comedor
+10/05/2023 19:48:06-> La hormigaHO0002 abandona el comedor
+10/05/2023 19:48:06-> La hormigaHO0002se  acerca al almacen para recoger comida
+10/05/2023 19:48:06-> La hormigaHO0002accede al almacen para recoger comida
+10/05/2023 19:48:06-> La hormigaHO0003deposita comida en el almacen
+10/05/2023 19:48:06-> La hormigaHO0003abandona el almacen
+10/05/2023 19:48:06-> La hormigaHC0002 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:06-> La hormigaHC0001 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:06-> La hormigaHC0002 tiene hambre y se mete al comedor
+10/05/2023 19:48:06-> La hormigaHC0002 comienza a comer
+10/05/2023 19:48:06-> La hormigaHC0001 tiene hambre y se mete al comedor
+10/05/2023 19:48:06-> La hormigaHC0001 comienza a comer
+10/05/2023 19:48:06-> La hormigaHO0003 sale de la colonia
+10/05/2023 19:48:06-> La hormigaHC0003 se va a la sala de descanso
+10/05/2023 19:48:06-> La hormigaHS0002 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:06-> La hormigaHS0002 comienza a entrenar
+10/05/2023 19:48:07-> La hormigaHO0010 ha nacido
+10/05/2023 19:48:07-> La hormigaHO0010 se mete en en tunel de entrada
+10/05/2023 19:48:07-> La hormigaHO0010 ha entrado en la colonia
+10/05/2023 19:48:07-> La hormigaHO0010se  acerca al almacen para recoger comida
+10/05/2023 19:48:07-> La hormigaHO0010accede al almacen para recoger comida
+10/05/2023 19:48:07-> La hormigaHO0008recoge comida del almacen
+10/05/2023 19:48:07-> La hormigaHO0008 se lleva comida del almacen
+10/05/2023 19:48:07-> La hormigaHO0008 lleva comida al comedor
+10/05/2023 19:48:09-> La hormigaHS0001 ha terminado de entrenar
+10/05/2023 19:48:09-> La hormigaHS0001 se va a la sala de descanso
+10/05/2023 19:48:09-> La hormigaHO0004recoge comida del almacen
+10/05/2023 19:48:09-> La hormigaHO0004 se lleva comida del almacen
+10/05/2023 19:48:09-> La hormigaHO0004 lleva comida al comedor
+10/05/2023 19:48:09-> La hormigaHO0008 llega al comedor con comida
+10/05/2023 19:48:10-> La hormigaHO0003 se mete en en tunel de entrada
+10/05/2023 19:48:10-> La hormigaHO0004 llega al comedor con comida
+10/05/2023 19:48:10-> La hormigaHO0003 ha entrado en la colonia
+10/05/2023 19:48:10-> La hormigaHO0003se  acerca al almacen para depositar comida
+10/05/2023 19:48:10-> La hormigaHO0003accede al almacen  para depositar comida
+10/05/2023 19:48:10-> La hormigaHS0003 ha terminado de entrenar
+10/05/2023 19:48:10-> La hormigaHS0003 se va a la sala de descanso
+10/05/2023 19:48:10-> La hormigaHC0002 se va a la sala de descanso
+10/05/2023 19:48:10-> La hormigaHC0003 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:10-> La hormigaHC0003 tiene hambre y se mete al comedor
+10/05/2023 19:48:10-> La hormigaHC0003 comienza a comer
+10/05/2023 19:48:10-> La hormigaHC0001 se va a la sala de descanso
+10/05/2023 19:48:11-> La hormigaHS0001 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:11-> La hormigaHS0001 comienza a entrenar
+10/05/2023 19:48:11-> La hormigaHO0008 deja la comida en el comedor
+10/05/2023 19:48:11-> La hormigaHO0008 abandona el comedor
+10/05/2023 19:48:11-> La hormigaHO0008se  acerca al almacen para recoger comida
+10/05/2023 19:48:11-> La hormigaHO0008accede al almacen para recoger comida
+10/05/2023 19:48:11-> La hormigaHO0004 deja la comida en el comedor
+10/05/2023 19:48:11-> La hormigaHO0004 abandona el comedor
+10/05/2023 19:48:11-> La hormigaHO0004se  acerca al almacen para recoger comida
+10/05/2023 19:48:11-> La hormigaHO0004accede al almacen para recoger comida
+10/05/2023 19:48:12-> La hormigaHS0003 ha terminado de descansar y abandona la sala
+10/05/2023 19:48:12-> La hormigaHS0003 comienza a entrenar
+10/05/2023 19:48:12-> La hormigaHO0007deposita comida en el almacen
+10/05/2023 19:48:12-> La hormigaHO0007abandona el almacen
+10/05/2023 19:48:12-> La hormigaHO0007 sale de la colonia
+10/05/2023 19:48:13-> La hormigaHS0001 ha terminado de entrenar
+10/05/2023 19:48:13-> La hormigaHS0001 se va a la sala de descanso
+10/05/2023 19:48:13-> La hormigaHS0002 ha terminado de entrenar
+10/05/2023 19:48:13-> La hormigaHS0002 se va a la sala de descanso
+10/05/2023 19:48:14-> La hormigaHC0003 se va a la sala de descanso

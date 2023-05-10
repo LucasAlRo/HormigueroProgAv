@@ -15,4 +15,11 @@ public interface MetodosCompartidos extends Remote{
     
     Integer getNObrExterior() throws RemoteException;
     Integer getNObrInterior() throws RemoteException;
+    Integer getNSoldInstruccion() throws RemoteException;
+    Integer getNSoldDefendiendo() throws RemoteException;
+    Integer getNCriaComedor() throws RemoteException;
+    Integer getNCriaRefugio() throws RemoteException;
+    void generarInsectoInvasor() throws RemoteException;
+    boolean comprobarAmenaza() throws RemoteException;
+    Integer getNSoldTotales() throws RemoteException;
 }

@@ -30,4 +30,38 @@ public class InvocacionesRemotas  extends UnicastRemoteObject implements Metodos
         return this.colonia.getNObrerasInterior();
     }
     
+    @Override 
+    public Integer getNSoldInstruccion(){
+        return this.colonia.getNSoldadosInstruccion();
+    }
+    
+    @Override 
+    public Integer getNSoldDefendiendo(){
+        return this.colonia.getNSoldadosDefendiendo();
+    }
+    
+    @Override 
+    public Integer getNCriaComedor(){
+        return this.colonia.getNCriasComedor();
+    }
+    
+    @Override 
+    public Integer getNCriaRefugio(){
+        return this.colonia.getNCriasRefugio();
+    }
+    
+    @Override
+    public void generarInsectoInvasor(){
+        this.colonia.generarInsectoInvasor();
+    }
+    
+    @Override
+    public boolean comprobarAmenaza(){
+        return this.colonia.comprobarAmenaza();
+    }
+    
+    @Override 
+    public Integer getNSoldTotales(){
+        return this.colonia.getNSoldadosTotales();
+    }
 }

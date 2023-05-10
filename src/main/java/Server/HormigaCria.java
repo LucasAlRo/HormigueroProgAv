@@ -32,7 +32,9 @@ public class HormigaCria extends Hormiga {
         
         while(true){
             
+                this.getC().getCriasComedor().add(this);
                 this.getC().comer(Util.intAleat(3000,5000), this);
+                this.getC().getCriasComedor().remove(this);
                 this.getC().descansar(4000, this);   
         
         }

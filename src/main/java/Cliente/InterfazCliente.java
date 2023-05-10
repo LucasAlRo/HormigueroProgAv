@@ -6,6 +6,9 @@ package Cliente;
 
 import CompartidosRMI.MetodosCompartidos;
 import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -27,6 +30,10 @@ public class InterfazCliente extends javax.swing.JFrame {
     public void actualizar() throws RemoteException{
         jOBusc.setText(this.metodos.getNObrExterior().toString());
         jOInterior.setText(this.metodos.getNObrInterior().toString());
+        jSInstruccion.setText(this.metodos.getNSoldInstruccion().toString());
+        jSDefensa.setText(this.metodos.getNSoldDefendiendo().toString());
+        jCComedor.setText(this.metodos.getNCriaComedor().toString());
+        jCRefugio.setText(this.metodos.getNCriaRefugio().toString());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +48,15 @@ public class InterfazCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jOInterior = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSInstruccion = new javax.swing.JTextField();
+        jSDefensa = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jCComedor = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jCRefugio = new javax.swing.JTextField();
+        jInvasion = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +73,34 @@ public class InterfazCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Nº de hormigas soldado realizando su instruccion:");
+
+        jLabel4.setText("Nº de hormigas soldado repeliendo una invasión:");
+
+        jSInstruccion.setText("0");
+
+        jSDefensa.setText("0");
+        jSDefensa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSDefensaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Nº de hormigas crías en la zona para comer:");
+
+        jCComedor.setText("0");
+
+        jLabel6.setText("Nº de hormigas crías refugiándose de una invasión:");
+
+        jCRefugio.setText("0");
+
+        jInvasion.setText("¡INVASIÓN!");
+        jInvasion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInvasionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,13 +108,31 @@ public class InterfazCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jOInterior)
-                    .addComponent(jOBusc))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jOInterior)
+                            .addComponent(jOBusc)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCRefugio)
+                            .addComponent(jCComedor)
+                            .addComponent(jSDefensa)
+                            .addComponent(jSInstruccion))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jInvasion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +145,25 @@ public class InterfazCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jOInterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jSInstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jSDefensa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jCComedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCRefugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jInvasion)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,11 +173,39 @@ public class InterfazCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jOInteriorActionPerformed
 
+    private void jSDefensaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSDefensaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSDefensaActionPerformed
+
+    private void jInvasionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInvasionActionPerformed
+        try {
+            // TODO add your handling code here:
+            if (metodos.comprobarAmenaza()) {
+                JOptionPane.showMessageDialog(null, "¡La colonia no aguantará dos insectos!");
+            } else if (metodos.getNSoldTotales() == 0) {
+                JOptionPane.showMessageDialog(null, "¡Aún no hay soldados! ¡No podrán defenderse!");
+            } else {
+                metodos.generarInsectoInvasor();
+            }
+        } catch (RemoteException ex) {
+            Logger.getLogger(InterfazCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jInvasionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField jCComedor;
+    private javax.swing.JTextField jCRefugio;
+    private javax.swing.JToggleButton jInvasion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jOBusc;
     private javax.swing.JTextField jOInterior;
+    private javax.swing.JTextField jSDefensa;
+    private javax.swing.JTextField jSInstruccion;
     // End of variables declaration//GEN-END:variables
 }
